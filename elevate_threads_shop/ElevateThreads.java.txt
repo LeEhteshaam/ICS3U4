@@ -1,0 +1,111 @@
+import java.util.Scanner;
+
+public class ElevateThreads {
+  public static void main(String[] args) {
+
+    /*
+     * Here I instantiate two new variables while will allow me to create while loops that start and 
+     * and end backed on user input. Futhermore, I construct 3 object, one scanner that will allow me to gain user input and
+     * two object (customerShirts and customerPants) which will be the object that will be altered based on user input. 
+     */
+    Shirts customerShirts = new Shirts(null, 0, false, 25.0, null, null, false);
+    Pants customerPants = new Pants(null, 0, false, 35.0, 0, 0, false);
+    Scanner input = new Scanner(System.in);
+    // For looping through store
+    int choice = -2;
+
+    //Welcomes the user to the shop.
+    System.out.println("----------------------------");
+
+    //Here I use an escape sequence. 
+    System.out.println("\"Welcome to Elevate Threads\"");
+    System.out.println("----------------------------");
+    System.out.println("\nWould you like to purchase an item? Press 1 to enter and -1 to leave.");
+    choice = input.nextInt();
+    input.nextLine();
+
+    //Here I start my shop, the while loop allows the program to run untill the user wishes to stop. 
+    while (choice >= 0) {
+      System.out.println("\nWould you like to purchase our finest shirts or pants? Type 1 for shirts and 2 for pants.");
+      int choiceTwo = input.nextInt();
+      input.nextLine();
+
+      //Here I utilize another variable to allow my the user to choose whether they want to buy shirts or pants. This specific if statement is for shirts. 
+      if (choiceTwo == 1) {
+        System.out.println("\nHow many shirts would you like?");
+        int numOfShirts = input.nextInt();
+        input.nextLine();
+        double shirtTotal = customerShirts.getPrice() * numOfShirts;
+        System.out.println("\nWhat color would you like your shirts to be?");
+        String shirtColor = input.nextLine();
+
+        //Throughout my code I use mutator methods to change the variables value to the customer will. 
+        System.out.println("\nWould you like a pattern on your shirt? Enter true for yes and false for no.");
+        boolean shirtHasPattern = input.nextBoolean();
+        input.nextLine();
+        System.out.println("\nWhat size do you want your shirt to be(small, medium or large)?");
+        String customerShirtSize = input.nextLine();
+        System.out.println();
+        System.out.println("What material would you like your shirts to be? We have natrual cotton, linen, and silk.");
+        String customerShirtMaterial = input.nextLine();
+        System.out.println("\nWould you like your shirt to have our classic logo? Enter true for yes and false for no.");
+        boolean customerShirtLogo = input.nextBoolean();
+        input.nextLine();
+        customerShirts.setCustomerShirts(shirtColor, numOfShirts, shirtHasPattern, shirtTotal, customerShirtSize, customerShirtMaterial, customerShirtLogo);
+        System.out.println();
+        System.out.println("---Receipt---");
+        System.out.println("\n-------------------------------------");
+
+        //Here I print out a toString method to allow the user ot understand what they chose.
+        System.out.println(customerShirts.toString());
+        System.out.println("-------------------------------------");
+        System.out.println("\nThank you for shopping at Elevate Threads! Have a nice day :)");
+        System.out.println("\nWould you like to purchase an item? Press 1 to enter and -1 to leave.");
+
+        // I allow the user to restart the loop or to exit out. 
+        choice = input.nextInt();
+        input.nextLine();
+
+        //Here I utilize another variable to allow my the user to choose whether they want to buy shirts or pants. This specific else if statement is for pants. 
+      } else if (choiceTwo == 2) {
+        System.out.println("\nHow many pants would you like?");
+        int numOfPants = input.nextInt();
+        input.nextLine();
+        System.out.println("\nWhat color would you like your pants to be?");
+        String pantColor = input.nextLine();
+        System.out.println("\nWould you like a pattern on your pants? Enter true for yes and false fo no.");
+        double pantTotal = customerPants.getPrice() * numOfPants;
+        boolean pantHasPattern = input.nextBoolean();
+        input.nextLine();
+        System.out.println("\nWhat would you like the hip length for the pants to be? (42.0 inches - 58.0 inches)");
+        double pantHipLength = input.nextDouble();
+        input.nextLine();
+        System.out.println("\nWhat would you like the waist length for the pants to be? (32 inches - 52 inches)");
+        int pantWaistLength = input.nextInt();
+        input.nextLine();
+        customerPants.setWaistLength(pantWaistLength);
+        System.out.println("\nWould you like your pants to be water proof? Enter true for yes and false for no.");
+        boolean pantWaterProof = input.nextBoolean();
+        input.nextLine();
+        customerPants.setIsWaterProof(pantWaterProof);
+        customerPants.setCustomerPants(pantColor, numOfPants, pantHasPattern, pantTotal, pantHipLength, pantWaistLength, pantWaterProof);
+        System.out.println();
+        System.out.println("---Receipt---");
+        System.out.println("\n-------------------------------------");
+        System.out.println(customerPants.toString());
+        System.out.println("-------------------------------------");
+        System.out.println("\nThank you for shopping at Elevate Threads! Have a nice day :)");
+        System.out.println("\nWould you like to purchase an item? Press 1 to enter and -1 to leave.");
+        choice = input.nextInt();
+        input.nextLine();
+
+        // This else statement allows me repeat the while loop if the user does not put a intended value. 
+      } else {
+        System.out.println("That is an invalid option.");
+      }
+    }
+
+    //Closes the scanner to ensure that I am not wasting computer resources. 
+    input.close();
+  }
+}

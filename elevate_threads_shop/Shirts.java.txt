@@ -1,0 +1,70 @@
+/*
+ * Brief: 
+ * This sub-class will allow the user to buy shirts, within this class there are 3 new variables that are unique to this class,
+ * thoose variables being size, material and a boolean variable that allows the user to know if the shirt is available.
+ * It also inherits many variables and methods from the super-class "Items".
+ */
+
+// Shirt class; subclass of Items class
+public class Shirts extends Items {
+  private String size;
+  private String material;
+  private boolean logo;
+
+  // No-Argument Constructor
+  public Shirts() {
+    size = "";
+    material = "";
+    logo = false;
+  }
+
+  // Instantiation Function
+  public Shirts(String color, int numOfItems, boolean hasPattern, double price, String size, String material, boolean logo) {
+    super(color, numOfItems, hasPattern, price);
+    this.size = size;
+    this.material = material;
+    this.logo = logo;
+  }
+
+  // Acessor Methods
+  public String getSize() {
+    return size;
+  }
+
+  public String getMaterial() {
+    return material;
+  }
+
+  public boolean getLogo() {
+    return logo;
+  }
+
+  // Mutator Methods
+  public void setSize(String size) {
+    this.size = size;
+  }
+
+  public void setMaterial(String material) {
+    this.material = material;
+  }
+
+  public void setLogo(boolean logo) {
+    this.logo = logo;
+  }
+
+  //This method will allow me to change the variables for objects instantiated from the shirt class, which will be useful in the ElevateThreads class.
+  public void setCustomerShirts(String color, int numOfItems, boolean hasPattern, double price, String size, String material, boolean logo) {
+    super.setColor(color);
+    super.setNumOfItems(numOfItems);
+    super.setHasPattern(hasPattern);
+    super.setPrice(price);
+    this.setSize(size);
+    this.setMaterial(material);
+    this.setLogo(logo);
+  }
+
+  // The toString method will return the value of the variables of any object instantiated from the Shirts class. 
+  public String toString() {
+    return super.toString() + "\nThis shirt has a logo:" + "." + this.logo + "\nThis shirt size is " + this.size + "." + "\nMaterial: " + this.material;
+  }
+}

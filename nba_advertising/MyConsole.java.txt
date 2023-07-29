@@ -1,0 +1,193 @@
+/* 
+ * This file is where I perform my main method and call upon method from the other classes
+ * (BasketballStadiums.java and FileRead.java). Futhermore, this file contains most of the code. 
+ * for the advertising program
+ */
+
+import java.util.Scanner;
+public class MyConsole {
+  public static void main(String[] args) {
+
+    //Constructor for file reader and scanner. File reader begins reading text files. 
+    Scanner input = new Scanner(System.in);
+    FileReader myFileReader = new FileReader("teams.txt");
+    String[] teams = myFileReader.getStringData(30);
+
+    myFileReader = new FileReader("locations.txt");
+    String[] locations = myFileReader.getStringData(30);
+
+    myFileReader = new FileReader("arenas.txt");
+    String[] arenas = myFileReader.getStringData(30);
+
+    myFileReader = new FileReader("capacities.txt");
+    int[] capacities = myFileReader.getIntData(30);
+
+    myFileReader = new FileReader("championshipwins.txt");
+    int[] championshipwins = myFileReader.getIntData(30);
+
+    //The constructor for myBasketballStadiums contains all the necessary data and is constructed with arrays previously read.
+    BasketballStadiums myBasketballStadiums = new BasketballStadiums(teams, locations, arenas, capacities, championshipwins);
+
+    //Sentinal value
+    int choice = 0;
+
+    //Greeting
+    System.out.println("--------------------------------------------------------------------------------------------");
+    System.out.println("Welcome! \nI am the \"NBA's\" official advertising specialist.\nEnter 1 to enter and -1 to leave.");
+    System.out.println("--------------------------------------------------------------------------------------------");
+    choice = input.nextInt();
+    input.nextLine();
+
+    //While loop to prevent user from breaking code. 
+    while (choice != 1 && choice != -1) {
+      System.out.println("That is an invalid option. Please try again!");
+      choice = input.nextInt();
+      input.nextLine();
+    }
+
+    //While loop allows user to enter the program multiple times without re-running the code. 
+    while (choice >= 0) {
+      System.out.println("\nWhat would you like to inquire about?");
+      System.out.println("--------------------------------------------------------------------------------------------");
+      System.out.println("Options include: \n1. Regions (Type \"region\") \n2. Teams with the most championships wins (Type \"championship\") \n3. Team with the most and least Stadium Capacities (Type \"capacity\")");
+      System.out.println("--------------------------------------------------------------------------------------------");
+      String choiceTwo = input.nextLine();
+
+      //Prints based on user input 
+      if (choiceTwo.equalsIgnoreCase("Region")) {
+        System.out.println("\nEnter the region you would like to learn about:\n--------------------------------------------------------------------------------------------");
+        System.out.println("Options include... \n1. Atlantic \n2. Central \n3. Southeast \n4. Northwest \n5. Pacific\n6. Southwest");
+        System.out.println("--------------------------------------------------------------------------------------------");
+        String choiceThree = input.nextLine();
+
+        //Based on user input, it prints out the user-wanted region.
+        if (choiceThree.equalsIgnoreCase("Atlantic")) {
+          System.out.println("\n" + myBasketballStadiums.getAtlanticTeams());
+          System.out.println("\nEnter 1 to enter and -1 to leave.");
+          choice = input.nextInt();
+          input.nextLine();
+          while (choice != 1 && choice != -1) {
+            System.out.println("That is an invalid option. Please try again!");
+            choice = input.nextInt();
+            input.nextLine();
+          }
+        } else if (choiceThree.equalsIgnoreCase("Central")) {
+          System.out.println("\n" + myBasketballStadiums.getCentralTeams());
+          System.out.println("\nEnter 1 to enter and -1 to leave.");
+          choice = input.nextInt();
+          input.nextLine();
+          while (choice != 1 && choice != -1) {
+            System.out.println("That is an invalid option. Please try again!");
+            choice = input.nextInt();
+            input.nextLine();
+          }
+        } else if (choiceThree.equalsIgnoreCase("Southeast")) {
+          System.out.println("\n" + myBasketballStadiums.getSoutheastTeams());
+          System.out.println("\nEnter 1 to enter and -1 to leave.");
+          choice = input.nextInt();
+          input.nextLine();
+          while (choice != 1 && choice != -1) {
+            System.out.println("That is an invalid option. Please try again!");
+            choice = input.nextInt();
+            input.nextLine();
+          }
+        } else if (choiceThree.equalsIgnoreCase("Pacific")) {
+          System.out.println("\n" + myBasketballStadiums.getPacificTeams());
+          System.out.println("\nEnter 1 to enter and -1 to leave.");
+          choice = input.nextInt();
+          input.nextLine();
+          while (choice != 1 && choice != -1) {
+            System.out.println("That is an invalid option. Please try again!");
+            choice = input.nextInt();
+            input.nextLine();
+          }
+        } else if (choiceThree.equalsIgnoreCase("Northwest")) {
+          System.out.println("\n" + myBasketballStadiums.getNorthwestTeams());
+          System.out.println("\nEnter 1 to enter and -1 to leave.");
+          choice = input.nextInt();
+          input.nextLine();
+          while (choice != 1 && choice != -1) {
+            System.out.println("That is an invalid option. Please try again!");
+            choice = input.nextInt();
+            input.nextLine();
+          }
+        } else if (choiceThree.equalsIgnoreCase("Southwest")) {
+          System.out.println("\n" + myBasketballStadiums.getSouthwestTeams());
+          System.out.println("\nEnter 1 to enter and -1 to leave.");
+          choice = input.nextInt();
+          input.nextLine();
+          while (choice != 1 && choice != -1) {
+            System.out.println("That is an invalid option. Please try again!");
+            choice = input.nextInt();
+            input.nextLine();
+          }
+        } else {
+          System.out.println("\nThat is an invalid option");
+          System.out.println("\nEnter 1 to enter and -1 to leave.");
+          choice = input.nextInt();
+          input.nextLine();
+          while (choice != 1 && choice != -1) {
+            System.out.println("That is an invalid option. Please try again!");
+            choice = input.nextInt();
+            input.nextLine();
+          }
+        }
+
+        //Prints top5 teams with most Championship wins if user inputs Championship.
+      } else if (choiceTwo.equalsIgnoreCase("Championship")) {
+        System.out.println("\n" + myBasketballStadiums.getTopFiveChampionshipWins());
+        System.out.println("\nEnter 1 to enter and -1 to leave.");
+        choice = input.nextInt();
+        input.nextLine();
+        while (choice != 1 && choice != -1) {
+          System.out.println("That is an invalid option. Please try again!");
+          choice = input.nextInt();
+          input.nextLine();
+        }
+
+        //Prints largest or smallest capacities based on user input.
+      } else if (choiceTwo.equalsIgnoreCase("Capacity")) {
+        System.out.println("\n--------------------------------------------------------------------------------------------");
+        System.out.println("Would you like to know about teams with the largest and smallest stadium(capacity wise).\nEnter \"Largest\" for the biggest stadiums and \"Smallest\" for the smallest stadiums.");
+        System.out.println("--------------------------------------------------------------------------------------------");
+        String choiceThree = input.nextLine();
+        if (choiceThree.equalsIgnoreCase("Largest")) {
+          System.out.println();
+
+          //Finds the top 5 stadiums with the most capacity.
+          System.out.println(myBasketballStadiums.getTopFiveCapacities());
+          System.out.println("\nEnter 1 to enter and -1 to leave.");
+          choice = input.nextInt();
+          input.nextLine();
+          while (choice != 1 && choice != -1) {
+            System.out.println("That is an invalid option. Please try again!");
+            choice = input.nextInt();
+            input.nextLine();
+          }
+        } else if (choiceThree.equalsIgnoreCase("Smallest")) {
+          System.out.println();
+
+          //Finds the bottum 5 stadiums with the least amount of capacity.
+          System.out.println(myBasketballStadiums.getBottomFiveCapacities());
+          System.out.println("\nEnter 1 to enter and -1 to leave.");
+          choice = input.nextInt();
+          input.nextLine();
+          while (choice != 1 && choice != -1) {
+            System.out.println("That is an invalid option. Please try again!");
+            choice = input.nextInt();
+            input.nextLine();
+          }
+        } else {
+          System.out.println();
+          System.out.println("That is a invalid option.");
+        }
+
+        //Prints out "invalid" before running the while loop again if the user inputs an invalid option
+      } else {
+        System.out.println("That is a invalid option.");
+      }
+    }
+    //Closes Scanner.
+    input.close();
+  }
+}

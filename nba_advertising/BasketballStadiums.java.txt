@@ -1,0 +1,240 @@
+/*
+ * This class contains most of the methods for creating and sorting my arrays.
+ * This class also store the BasketballStadiums constructor with all of its variables.
+ * I created 6 extra arrays in this class that would contain the teams in a region. 
+ */
+
+//Here I define BasketballStadiums and it's variables (which are all arrays).
+public class BasketballStadiums {
+  private String[] teams;
+  private String[] locations;
+  private String[] arenas;
+  private int[] capacities;
+  private int[] championshipwins;
+  private String[] Atlantic = {"Toronto Raptors", "Boston Celtics", "Brooklyn Nets", "New York Knicks", "Philadelphia 76ers"};
+  private String[] Central = {"Chicago Bulls", "Cleveland Cavaliers", "Detroit Pistons", "Indiana Pacers", "Milwaukee Bucks"};
+  private String[] Southeast = {"Atlanta Hawks", "Charlotte Hornets", "Miami Heat", "Orlando Magic", "Washington Wizards"};
+  private String[] Pacific = {"Golden State Warriors", "Los Angeles Clippers", "Los Angeles Lakers", "Phoenix Suns", "Sacramento Kings"};
+  private String[] Northwest = {"Denver Nuggets", "Minnesota Timberwolves", "Oklahoma City Thunder", "Portland Trail Blazers", "Utah Jazz"};
+  private String[] Southwest = {"Dallas Mavericks", "Houston Rockets", "Memphis Grizzlies", "New Orleans Pelicans", "San Antonio Spurs"};
+
+  //Argument constructor. 
+  public BasketballStadiums(String[] teams, String[] locations, String[] arenas, int[] capacities, int[] championshipwins) {
+    this.teams = teams;
+    this.locations = locations;
+    this.arenas = arenas;
+    this.capacities = capacities;
+    this.championshipwins = championshipwins;
+  }
+
+  //Accessor method that return team at a index point.
+  public String getTeam(int index) {
+    return teams[index];
+  }
+
+  /*
+   * These next few accessor methods (getAtlanticteams -- getSouthwestTeams) are enhanced for loops that print out the entire 
+   * array of the specified region. 
+   */
+  public String getAtlanticTeams() {
+    String results = "";
+    for (String team: Atlantic) {
+      results += team + "\n";
+    }
+    return results;
+  }
+
+  public String getCentralTeams() {
+    String results = "";
+    for (String team: Central) {
+      results += team + "\n";
+    }
+    return results;
+  }
+
+  public String getSoutheastTeams() {
+    String results = "";
+    for (String team: Southeast) {
+      results += team + "\n";
+    }
+    return results;
+  }
+
+  public String getPacificTeams() {
+    String results = "";
+    for (String team: Pacific) {
+      results += team + "\n";
+    }
+    return results;
+  }
+
+  public String getNorthwestTeams() {
+    String results = "";
+    for (String team: Northwest) {
+      results += team + "\n";
+    }
+    return results;
+  }
+
+  public String getSouthwestTeams() {
+    String results = "";
+    for (String team: Southwest) {
+      results += team + "\n";
+    }
+    return results;
+  }
+
+  //This accessor method returns the top 5 teams with the most capacities.
+  public String getTopFiveCapacities() {
+    String results = "";
+    int maxOne = capacities[0];
+    int maxTwo = capacities[1];
+    int maxThree = capacities[2];
+    int maxFour = capacities[3];
+    int maxFive = capacities[4];
+    String teamOne = "";
+    String teamTwo = "";
+    String teamThree = "";
+    String teamFour = "";
+    String teamFive = "";
+
+    //For loop that changes the value of each variabe (maxOne -- maxFive) if capacties[i] is greater than the varaible. 
+    for (int i = 0; i <= capacities.length - 1; i++) {
+      if (maxOne < capacities[i]) {
+        maxFive = maxFour;
+        maxFour = maxThree;
+        maxThree = maxTwo;
+        maxTwo = maxOne;
+        maxOne = capacities[i];
+        teamOne = getTeam(i);
+      } else if (maxTwo < capacities[i]) {
+        maxFive = maxFour;
+        maxFour = maxThree;
+        maxThree = maxTwo;
+        maxTwo = capacities[i];
+        teamTwo = getTeam(i);
+      } else if (maxThree < capacities[i]) {
+        maxFive = maxFour;
+        maxFour = maxThree;
+        maxThree = capacities[i];
+        teamThree = getTeam(i);
+      } else if (maxFour < capacities[i]) {
+        maxFive = maxFour;
+        maxFour = capacities[i];
+        teamFour = getTeam(i);
+      } else if (maxFive < capacities[i]) {
+        maxFive = capacities[i];
+        teamFive = getTeam(i);
+      }
+      results = "1. " + teamOne + ": " + maxOne + "\n2. " + teamTwo + ": " + maxTwo +
+        "\n3. " + teamThree + ": " + maxThree + "\n4. " + teamFour + ": " + maxFour +
+        "\n5. " + teamFive + ": " + maxFive;
+    }
+
+    //Returns results
+    return results;
+  }
+
+  //This accessor method returns the bottum 5 teams with the least amount of capacity.
+  public String getBottomFiveCapacities() {
+    String results = "";
+    int minOne = capacities[0];
+    int minTwo = capacities[1];
+    int minThree = capacities[2];
+    int minFour = capacities[3];
+    int minFive = capacities[4];
+    String teamOne = "";
+    String teamTwo = "";
+    String teamThree = "";
+    String teamFour = "";
+    String teamFive = "";
+
+    //For loop that changes the value of each variabe (minOne -- minFive) if capacties[i] is less than the varaible. 
+    for (int i = 0; i <= capacities.length - 1; i++) {
+      if (minOne > capacities[i]) {
+        minFive = minFour;
+        minFour = minThree;
+        minThree = minTwo;
+        minTwo = minOne;
+        minOne = capacities[i];
+        teamOne = getTeam(i);
+      } else if (minTwo > capacities[i]) {
+        minFive = minFour;
+        minFour = minThree;
+        minThree = minTwo;
+        minTwo = capacities[i];
+        teamTwo = getTeam(i);
+      } else if (minThree > capacities[i]) {
+        minFive = minFour;
+        minFour = minThree;
+        minThree = capacities[i];
+        teamThree = getTeam(i);
+      } else if (minFour > capacities[i]) {
+        minFive = minFour;
+        minFour = capacities[i];
+        teamFour = getTeam(i);
+      } else if (minFive > capacities[i]) {
+        minFive = capacities[i];
+        teamFive = getTeam(i);
+      }
+      results = results = "1. " + teamOne + ": " + minOne + "\n2. " + teamTwo + ": " + minTwo +
+        "\n3. " + teamThree + ": " + minThree + "\n4. " + teamFour + ": " + minFour +
+        "\n5. " + teamFive + ": " + minFive;
+    }
+
+    //Returns results.
+    return results;
+  }
+
+  //This accessor method returns the top 5 teams with the most capacities.
+  public String getTopFiveChampionshipWins() {
+    String results = "";
+    int maxOne = 0;
+    int maxTwo = 0;
+    int maxThree = 0;
+    int maxFour = 0;
+    int maxFive = 0;
+    String teamOne = "";
+    String teamTwo = "";
+    String teamThree = "";
+    String teamFour = "";
+    String teamFive = "";
+
+    //For loop that changes the value of each variabe (maxOne -- maxFive) if capacties[i] is greater than the varaible. 
+    for (int i = 0; i <= championshipwins.length - 1; i++) {
+      if (championshipwins[i] > maxOne) {
+        maxFive = maxFour;
+        maxFour = maxThree;
+        maxThree = maxTwo;
+        maxTwo = maxOne;
+        maxOne = championshipwins[i];
+        teamOne = getTeam(i);
+      } else if (championshipwins[i] > maxTwo) {
+        maxFive = maxFour;
+        maxFour = maxThree;
+        maxThree = maxTwo;
+        maxTwo = championshipwins[i];
+        teamTwo = getTeam(i);
+      } else if (championshipwins[i] > maxThree) {
+        maxFive = maxFour;
+        maxFour = maxThree;
+        maxThree = championshipwins[i];
+        teamThree = getTeam(i);
+      } else if (championshipwins[i] > maxFour) {
+        maxFive = maxFour;
+        maxFour = championshipwins[i];
+        teamFour = getTeam(i);
+      } else if (championshipwins[i] > maxFive) {
+        maxFive = championshipwins[i];
+        teamFive = getTeam(i);
+      }
+
+      results = "1. " + teamOne + ": " + maxOne + "\n2. " + teamTwo + ": " + maxTwo +
+        "\n3. " + teamThree + ": " + maxThree + "\n4. " + teamFour + ": " + maxFour +
+        "\n5. " + teamFive + ": " + maxFive;
+    }
+
+    //Returns results.
+    return results;
+  }
+}

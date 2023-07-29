@@ -1,0 +1,75 @@
+/*
+ * This sub-class will allow the user to buy pants, within this class there are 3 new variables that are unique to this class,
+ * thoose variables being hipLength, waistLength and a boolean variable that allows the user to know if the paint is water proof.
+ * It also inherits many variables and methods from the super-class "Items".
+ */
+
+//Here I define pants as a sub-class of Items and define it's attributes.
+public class Pants extends Items {
+  private double hipLength;
+  private int waistLength;
+  private boolean isWaterProof;
+
+  //Here Is define the default value of these variables (no-argument constructor). 
+  public Pants() {
+    hipLength = 0.00;
+    waistLength = 0;
+    isWaterProof = false;
+  }
+
+  // Here I define a parameterized constructor with unique and inherited attriubtes. 
+  public Pants(String color, int numOfItems, boolean hasPattern, double price, double hipLength, int waistLength, boolean isWaterProof) {
+    super(color, numOfItems, hasPattern, price);
+    this.hipLength = hipLength;
+    this.waistLength = waistLength;
+    this.isWaterProof = isWaterProof;
+  }
+
+  /*
+   * These next few methods (getHipLength -- getIsWaterProof) are accessor methods
+   * which will allow the user to access variables that are defined above. 
+   */
+  public double getHipLength() {
+    return this.hipLength;
+  }
+
+  public int getWaistLength() {
+    return this.waistLength;
+  }
+
+  public boolean getIsWaterProof() {
+    return this.isWaterProof;
+  }
+
+  /*
+   * These next few methods (setHipLength -- setIsWaterProof) are mutator methods which will allow 
+   * us to alter the value of the variable directly from the shop. 
+   */
+  public void setHipLength(double hipLength) {
+    this.hipLength = hipLength;
+  }
+
+  public void setWaistLength(int waistLength) {
+    this.waistLength = waistLength;
+  }
+
+  public void setIsWaterProof(boolean isWaterProof) {
+    this.isWaterProof = isWaterProof;
+  }
+
+  //This method will allow me to change the variables for objects instantiated from the shirt class, which will be useful in the ElevateThreads class.
+  public void setCustomerPants(String color, int numOfItems, boolean hasPattern, double price, double hipLength, int waistLength, boolean isWaterProof) {
+    super.setColor(color);
+    super.setNumOfItems(numOfItems);
+    super.setHasPattern(hasPattern);
+    super.setPrice(price);
+    this.setHipLength(hipLength);
+    this.setWaistLength(waistLength);
+    this.setIsWaterProof(isWaterProof);
+  }
+
+  // The toString method will return the value of the variables of any object instantiated from the Pants class. 
+  public String toString() {
+    return super.toString() + "\nHip Length: " + this.hipLength + "\nWaist Length: " + this.waistLength + "\nIs it waterproof: " + this.isWaterProof;
+  }
+}

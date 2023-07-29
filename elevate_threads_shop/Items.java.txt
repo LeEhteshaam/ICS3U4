@@ -1,0 +1,75 @@
+  /* 
+   * This super class will cointain many attributes and methods 
+   * I want my sub-classes to inherit. Nevertheless, sub-classes pants and shirts.
+   * Nevertheless, because the sizing of pants and shirts are radically different, I want each sub-class to 
+   * have class specfic attributes and methods. 
+   */
+
+  // Here I define a new class named "Items", this class has user-defined attributes and behaviors which are listed below.
+  public class Items {
+    private String color;
+    private int numOfItems;
+    private boolean hasPattern;
+    private double price;
+
+    // Here I define the default value for the variables(no argument constructor). 
+    public Items() {
+      color = "";
+      numOfItems = 0;
+      hasPattern = false;
+      price = 0;
+    }
+
+    // Here I write a parameterized constructor to assign user-specific values. 
+    public Items(String color, int numOfItems, boolean hasPattern, double price) {
+      this.color = color;
+      this.numOfItems = numOfItems;
+      this.hasPattern = hasPattern;
+      this.price = price;
+    }
+
+    /*
+     * These next few methods (getColor -- getPrice) are accessor methods
+     * which will allow the user to access variables that are defined above. 
+     */
+    public String getColor() {
+      return color;
+    }
+
+    public int getNumOfItems() {
+      return numOfItems;
+    }
+
+    public boolean getHasPattern() {
+      return hasPattern;
+    }
+
+    public double getPrice() {
+      return price;
+    }
+
+    /*
+     * These next few methods (setColor -- setPrice) are mutator methods which will allow 
+     * us to alter the value of the variable directly from the shop. 
+     */
+    public void setColor(String color) {
+      this.color = color;
+    }
+
+    public void setNumOfItems(int numOfItems) {
+      this.numOfItems = numOfItems;
+    }
+
+    public void setHasPattern(boolean hasPattern) {
+      this.hasPattern = hasPattern;
+    }
+
+    public void setPrice(double price) {
+      this.price = price;
+    }
+
+    // The toString method will return the value of the variables of any object instantiated from the Items class. 
+    public String toString() {
+      return "Your items is " + this.color + ".\nThe number of items is " + this.numOfItems + ".\nThis item has a pattern: " + this.hasPattern + ".\nYour purchase is $" + this.price;
+    }
+  }
